@@ -1,0 +1,23 @@
+// File Name  : _fonts.scss
+// Version : 1.0.1
+// Location :
+// Description : This file contain all fonts that are used.
+
+// Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+// DM Serif Display
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+// Font Awesome Icon
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+// Logo Fonts
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
+
+// Variables
+$font-primary : 'Roboto', sans-serif;
+$font-secondary: 'DM Serif Display', serif;
+$font-base: 'Fira Sans', sans-serif;
+$font-logo: 'Righteous', cursive;

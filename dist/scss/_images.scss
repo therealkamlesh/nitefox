@@ -1,0 +1,35 @@
+// File Name  : images.scss
+// Version : 1.0.1
+// Location :
+// Description : This file contain all graphics and images.
+
+// Logo
+$logo: url("/assets/images/logo.png");
+
+// Preloader Icon
+$preloader-bg: url("/assets/images/preloader.gif");
+
+//Hero Image
+$hero-image: url("/assets/images/hero.jpg");
+
+
+//Logo
+@mixin logo {
+	background-image: $logo;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+// Preloader
+@mixin preloader {
+    position: absolute;
+    background-image: $preloader-bg;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: -100px 0 0 -100px;
+}
+
+@mixin hero-image {
+    background-image: $hero-image;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
