@@ -4,6 +4,38 @@
 // Description : This file contain colors set.
 
 
+
+// Theme Colors
+:root {
+	--darkBG: #121212;
+	--lightBG: #FFFFFF;
+
+	--black: #212121;
+	--white: #FFFFFF;
+
+
+}
+
+// Light Theme Color Scheme
+.light-theme {
+
+    // Base
+	--mainBg: var(--lightBG);
+	--fontColor: var(--black);
+
+	
+}
+
+// Dark Theme Color Scheme
+.dark-theme {
+	
+	// Base
+	--mainBg: var(--darkBG);
+	--fontColor: var(--white);
+	
+}
+
+
 // Base Color
 $color-white: #FFFFFF;
 $color-black: #000000;

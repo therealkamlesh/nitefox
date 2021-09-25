@@ -3,6 +3,23 @@
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap");
+:root {
+  --darkBG: #121212;
+  --lightBG: #FFFFFF;
+  --black: #212121;
+  --white: #FFFFFF;
+}
+
+.light-theme {
+  --mainBg: var(--lightBG);
+  --fontColor: var(--black);
+}
+
+.dark-theme {
+  --mainBg: var(--darkBG);
+  --fontColor: var(--white);
+}
+
 html, body {
   scrollbar-width: thin;
   scrollbar-color: white;
@@ -370,30 +387,24 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-/********** Variables Start **********/
 :root {
-  --dark_bg: #121212;
-  --light_bg: #FFFFFF;
-  --black: #000000;
+  --darkBG: #121212;
+  --lightBG: #FFFFFF;
+  --black: #212121;
   --white: #FFFFFF;
 }
 
 .light-theme {
-  --mainBg: var(--light_bg);
+  --mainBg: var(--lightBG);
   --fontColor: var(--black);
-  --lineColor: var(--black);
-  --logoColor: var(--light_bg);
-  --samBG: var(--light_bg);
 }
 
 .dark-theme {
-  --mainBg: var(--dark_bg);
+  --mainBg: var(--darkBG);
   --fontColor: var(--white);
-  --lineColor: var(--white);
-  --logoColor: var(--light_bg);
-  --samBG: var(--dark_bg);
 }
 
+/********** Variables Start **********/
 /********** Variables End **********/
 /********** Components Start **********/
 .rotationlocker {
@@ -509,7 +520,7 @@ input[type="checkbox"], input[type="radio"] {
   .logo {
     left: 4vh;
     top: 5vh;
-    color: var(--logoColor);
+    color: #FFFFFF;
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -528,7 +539,7 @@ input[type="checkbox"], input[type="radio"] {
   .logo {
     left: 5vh;
     top: 5vh;
-    color: var(--logoColor);
+    color: #FFFFFF;
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -547,7 +558,7 @@ input[type="checkbox"], input[type="radio"] {
   .logo {
     left: 7vh;
     top: 7vh;
-    color: var(--logoColor);
+    color: #FFFFFF;
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -630,21 +641,6 @@ input[type="checkbox"], input[type="radio"] {
 .switch input:checked + .slider {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
-}
-
-.btn {
-  position: relative;
-  color: #FFFFFF;
-  border: 2px solid #FFFFFF;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.btn__hero {
-  z-index: 1;
-  padding: 1em;
-  top: 60px;
-  margin: 0 2em;
 }
 
 .btn__open, .btn__close {
@@ -1066,8 +1062,8 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .wrapper-full {
-  padding-right: auto;
-  padding-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .container {
@@ -1091,7 +1087,7 @@ input[type="checkbox"], input[type="radio"] {
   padding: 5em 0;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
-  color: var(--lineColor);
+  color: var(--fontColor);
 }
 
 .about h2 {
@@ -1110,7 +1106,7 @@ input[type="checkbox"], input[type="radio"] {
   width: 10%;
   margin-top: 14px;
   margin-left: 12px;
-  background-color: var(--lineColor);
+  background-color: var(--fontColor);
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
