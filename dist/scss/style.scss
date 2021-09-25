@@ -7,33 +7,6 @@
 
 /********** Variables Start **********/
 
-
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-	.rotationlocker{
-		z-index: 9999999;
-		position: fixed;
-		background-color: #FF0043;
-		display: block;
-		width: 100vw;
-		height: 100vh;
-		font-family: $font-primary;
-		color: white;	
-		text-align: center;
-		img{
-			position: fixed;
-			top: 30%;
-			left: 45%;
-			width: 12vw;
-		}		
-		p{
-			position: relative;
-			top: 65%;
-			font-size: 1.1em;
-			font-weight: 500;
-		}
-	}	
-}
-
 // Zeros Mixin
 @mixin zero {
     top: 0;
@@ -70,12 +43,9 @@ $transition: all 1s ease-in-out;
 	--mainBg: var(--light_bg);
 	--fontColor: var(--black);
 	--lineColor: var(--black);
-	// Theme Switcher
-	--switcherBg: #f1f1f1;
-	--switcherColor: #212121;
-	// Hero Video
-	--overlayBg: var(--dark_bg);
-	--ovarlayOpac: 0.3;
+	--logoColor: var(--light_bg);
+	--samBG: var(--light_bg);
+
 }
 
 // Dark Theme Color Scheme
@@ -83,13 +53,9 @@ $transition: all 1s ease-in-out;
 	// Base
 	--mainBg: var(--dark_bg);
 	--fontColor: var(--white);
-	--lineColor: var(--white);
-	// Theme Switcher
-	--switcherBg: #FFEB3B;
-	--switcherColor: #000000;
-	// Hero Video
-	--overlayBg: var(--dark_bg);
-	--ovarlayOpac: 0.8;
+	--lineColor: var(--white);	
+	--logoColor: var(--light_bg);
+	--samBG: var(--dark_bg);
 }
 
 
@@ -98,23 +64,50 @@ $transition: all 1s ease-in-out;
 
 /********** Components Start **********/
 
+// Rotation Locker
+.rotationlocker {
+	display: none;
+	@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+		z-index: 99999;
+		position: fixed;
+		background-color: #FF0043;
+		transition: background-color 0.5s ease-in-out;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		font-family: $font-primary;
+		color: white;
+		text-align: center;
+		img{
+			position: fixed;
+			top: 30%;
+			left: 45%;
+			width: 12vw;				
+		}
+		p{
+			position: relative;
+			top: 65%;
+			font-size: 1.1em;
+			font-weight: 500;
+		}
+	}
+}
 
 // Hidden
 .hidden, .none {
 	display: none;
 }
 
-
 $cursor-size: 0.4em;
 // Cursor
 .cursor {
-	mix-blend-mode: difference;
-	z-index: 999;
+	z-index: 999999;
 	pointer-events: none;
 	position: absolute;
 	--size: 0.5em;
-    height: var(--size);
+	height: var(--size);
     width:  var(--size);
+	mix-blend-mode: difference;
 	background-color: $color-bg-primary;
 	border-radius: 50px;
 	transform: translate(-50%, -50%);
@@ -131,26 +124,31 @@ $cursor-size: 0.4em;
 			background-color: $color
 		}
 	}
+	// Hidden on Phone Screen
 	@include for-size(phone-only) {
 		visibility: hidden;
 	}
+	// Hidden on Tablet Portrait Screen
 	@include for-size(tablet-portrait-up) {
 		visibility: hidden;
 	}
+	// Visible on Tablet Landscape Screen	
 	@include for-size(tablet-landscape-up) {
+		visibility: visible;
+	}
+	// Visible on Desktop Screen
+	@include for-size(desktop-up) {
 		visibility: visible;
 	}
 }
 
 // Logo
-.logo{
+.logo {
 	@include fixstyling();
-	// Mixin Only Mobile
-	@mixin onlylogo($left, $top, $fontsize) {	
-		position: absolute;
+	@mixin onlylogo($left, $top, $fontsize) {
 		left: $left;
 		top: $top;
-		color: #fff;
+		color: var(--logoColor);
 		font-family: $font-logo;
 		font-size: $fontsize;
 		&:before{
@@ -161,17 +159,17 @@ $cursor-size: 0.4em;
 			margin-left: 3px;
 			margin-top: 1px;
 			font-weight: 900;
-		}	
+		}
 	}
-	// Small Screen (Only Mobile)
+	// Phone Screen
 	@include for-size(phone-only) {
 		@include onlylogo(4vh, 5vh, 1.7em);
 	}
-	// Medium Screen (Only Mobile)
+	// Tablet Portrait Screen
 	@include for-size(tablet-portrait-up) {
 		@include onlylogo(5vh,5vh, 1.7em);
 	}
-	// Large Screen (Only Mobile)
+	// Desktop Screen
 	@include for-size(desktop-up) {
 		@include onlylogo(7vh,7vh, 1.7em);
 	}
@@ -180,22 +178,26 @@ $cursor-size: 0.4em;
 // Copyright
 .copyright {
 	@include fixstyling();
-	left: 3vw;
+	left: 4vw;
 	bottom: 6vh;
-	font-size: 11px;
+	font-size: 12px;
 	color: $color-font-base;
 	writing-mode: vertical-rl;
 	transform: rotate(-180deg);
 	letter-spacing: 2px;
+	// Hidden on Phone Screen
 	@include for-size(phone-only) {
 		visibility: hidden;
 	}
+	// Hidden on Tablet Portrait Screen
 	@include for-size(tablet-portrait-up) {
 		visibility: hidden;
 	}
+	// Visible on Tablet Landscape Screen	
 	@include for-size(tablet-landscape-up) {
 		visibility: visible;
 	}
+	// Visible on Desktop Screen
 	@include for-size(desktop-up) {
 		visibility: visible;
 	}
@@ -204,41 +206,28 @@ $cursor-size: 0.4em;
 // Theme Switcher
 .switch {
 	z-index: 2;
-	position: fixed;
 	display: block;
+	position: fixed;
 	cursor: pointer;
-	width: 60px;
-	top: 4.8em;
-	right: 9em;
-	& div {
-		background-color: var(--switcherBg);
-		transition: 0.5s;
-		display: block;
-		width: 35px;
-		border-radius: 50px;
-		padding: 0 5px;
-		box-sizing: border-box;
-		cursor: pointer;
-	}
+	margin: auto;	
+	top: 6.8vh;
+	right: 12vw;	
 	& input {
 		display: none;
-	}
+	}	
 	& .slider {
-		background-color: var(--switcherColor);
-		transition: 0.5s;
-		border-radius: 34px;
-		height: 12px;
-		width: 12px;
 		display: inline-block;
 		position: relative;
-	}
+		transition: 0.5s;	
+		font-size: 1.5em;
+	}	
 	& input:checked + .slider {
-		transform: translateX(13px);
+		filter: grayscale(100%);
 	}
 }
 
 // Buttons
-.btn{
+.btn {
 	position: relative;
 	color: $color-font-base;
 	border: 2px solid $color-white;
@@ -332,7 +321,7 @@ $cursor-size: 0.4em;
 	opacity: 0;
 }
 // Main Menu
-.menu{
+.menu {
 	z-index: 2;
 	position: fixed;
     right: 0;
@@ -407,14 +396,15 @@ $cursor-size: 0.4em;
 }
 
 // Hero Section
-.hero{
-	position: fixed;
+.hero {
+	z-index: -5;
+	position: relative;
 	display: block;
 	height: 100vh;
 	width: 100vw;
 	// Hero Videos
 	.hero-video {
-		z-index: -2;
+		z-index: -4;
 		object-fit: cover;
 		width: 100vw;
 		height: 100vh;
@@ -424,76 +414,72 @@ $cursor-size: 0.4em;
 	}
 	// Rounder
 	.rounder{
-
+		// Phone Screen
 		@include for-size(phone-only) {
 			width: 250px;
-			height: 250px;	
+			height: 250px;
 		}
-
+		// Tablet Portrait Screen
 		@include for-size(tablet-portrait-up) {
 			width: 300px;
-			height: 300px;	
+			height: 300px;
 		}
-
+		// Tablet Landscape Screen
 		@include for-size(tablet-portrait-up) {
 			width: 350px;
-			height: 350px;	
+			height: 350px;
 		}
-
+		// Desktop Screen
 		@include for-size(desktop-up) {
 			width: 400px;
-			height: 400px;	
+			height: 400px;
+			z-index: 999999;
 		}
-
+		// Large Desktop Screen
 		@include for-size(big-desktop-up) {
 			width: 500px;
-			height: 500px;	
+			height: 500px;			
 		}
-
-
-
+		@include zero();
 		display: inline-block;
 		position: fixed;
-		z-index: -1;
-		@include zero();
+		z-index: -3;
 		margin: auto;
 		border-radius: 100%;
-		box-shadow: 0 0 2rem 0 rgba(0, 0, 0, .4);
+		box-shadow: 0 0 5rem 0 rgba(0, 0, 0, .2);
 		.content {
-			align-items: center;
 			display: flex;
+			align-items: center;
 			justify-content: center;
 			height: 100%;
 			width: 100%;
 			.context {
 				border-radius: 100%;
-			
+				// Phone Screen
 				@include for-size(phone-only) {
 					width: 250px;
-					height: 250px;	
+					height: 250px;
 				}
-		
+				// Tablet Portrait Screen
 				@include for-size(tablet-portrait-up) {
 					width: 300px;
-					height: 300px;	
+					height: 300px;
 				}
-		
+				// Tablet Landscape Screen
 				@include for-size(tablet-portrait-up) {
 					width: 350px;
-					height: 350px;	
-				}		
-		
+					height: 350px;
+				}
+				// Desktop Screen
 				@include for-size(desktop-up) {
 					width: 400px;
-					height: 400px;	
+					height: 400px;
 				}
-		
+				// Large Desktop Screen
 				@include for-size(big-desktop-up) {
 					width: 500px;
-					height: 500px;	
+					height: 500px;
 				}
-		
-
 				// Center Logo
 				.main-logo{
 					position: absolute;
@@ -505,11 +491,9 @@ $cursor-size: 0.4em;
 				// Rounder around logo
 				.logo-round{
 					position: absolute;
-					width: 100%;
-					left: 0;
-					top: 0;
-					mix-blend-mode: exclusion;
-					filter: invert(1);
+					width: 80%;
+					left: 10%;
+					top: 10%;
 					-webkit-animation:spin 15s linear infinite;
 					-moz-animation:spin 15s linear infinite;
 					animation:spin 15s linear infinite;
@@ -520,18 +504,91 @@ $cursor-size: 0.4em;
 			.context {
 				-webkit-backdrop-filter: blur(5px);
 				backdrop-filter: blur(5px);
-				background-color: rgba(80, 80, 80, 0.1);
+
 			}
 		}
 	}
 }
 
 
+
+
+.wrapper {
+	$wrapper-width: 90%;
+	$wrapper-padding: 16px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: $wrapper-padding;
+	padding-left: $wrapper-padding;
+	width: $wrapper-width;
+	max-width: 100%;
+	&-full{
+		padding-right: auto;
+		padding-left: auto;	
+	}
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 75%;
+	max-width: 75%;
+}
+.section {
+	display: flex;
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	background-color: var(--mainBg);
+}
+
+
+
+
+.about {
+	padding: 5em 0;
+	transition: $transition;
+	color: var(--lineColor);
+	@mixin titleline {
+		position: absolute;
+		display: inline-block;
+		content: "";
+		height: 2px;
+		width: 10%;
+		margin-top: 14px;
+		margin-left: 12px;
+		background-color: var(--lineColor);
+		transition: $transition;
+	}
+	h2 {
+		font-size: 1.4em;
+		text-align: left;
+		text-transform: uppercase;
+		letter-spacing: 2px;		
+		font-weight: 200;
+		&::after{
+			@include titleline();
+		}
+	}
+	p {
+		font-size: 1.3em;
+		line-height: 2em;
+		text-align: left;		
+
+	}
+}
+
+
+
+
+
+
+
+
 /********** Components End **********/
 
 /********** Animation Start **********/
 
-// Logo Rotation
+// Hero Logo Rotation
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

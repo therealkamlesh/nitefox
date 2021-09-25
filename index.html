@@ -73,6 +73,12 @@
 	<!--Cursor-->
 	<div class="cursor"></div>
 
+	<!--Rotation Locker-->
+	<div class="rotationlocker">
+		<img src="/assets/images/logo-white.png" alt="Logo">
+		<p>For best user experince, please rotate your device!</p>
+	</div>
+
 	<!--Logo-->
 	<div class="logo"></div>
 
@@ -81,14 +87,13 @@
 		&copy; NiteFox Enterprises 2018 - 2021
 	</div>
 
-	<!--
+	<!--Dark Mode Switch-->
 	<label class="switch">
 		<div>
-		  <input type="checkbox" />
-		  <span class="slider round"></span>
+		  <input type="checkbox"/>
+		  <span class="slider round">🌕</span>
 		</div>
 	</label>
-	-->
 
 	<!--Main Menu-->
 	<div class="btn btn__open" onclick="openNav()"><span>menu</span> &#9776;</div>
@@ -122,20 +127,18 @@
 
 	<!--Hero Section-->
 	<div class="hero">
-		<div class="container">
-			<div class="row">
-				<div class="d-col-12 t-col-12 m-col-12">
-					<!--Hero Video-->
-					<video playsinline autoplay muted loop class="hero-video">
-						<source src="https://monopo.co.jp/wp-content/themes/monopo/video/bg.mp4" type="video/mp4">
-					</video>
-					<!--Rounder-->
-					<div class="rounder">
-						<div class="content">
-							<div class="context">
-								<img class="main-logo" src="/assets/images/logo.png" alt="Main Logo">
-								<img class="logo-round" src="/assets/images/round-logo-strip.png" alt="Circle around Logo">
-							</div>
+		<div class="row">
+			<div class="d-col-12 t-col-12 m-col-12">
+				<!--Hero Video-->
+				<video playsinline autoplay muted loop class="hero-video">
+					<source src="https://monopo.co.jp/wp-content/themes/monopo/video/bg.mp4" type="video/mp4">
+				</video>
+				<!--Rounder-->
+				<div class="rounder">
+					<div class="content">
+						<div class="context">
+							<img class="main-logo" src="/assets/images/logo-white.png" alt="Main Logo">
+							<img class="logo-round" src="/assets/images/round-logo-strip-white.png" alt="Circle around Logo">
 						</div>
 					</div>
 				</div>
@@ -143,15 +146,39 @@
 		</div>
 	</div>
 
+	<!--Main Wrapper-->
+	<div class="wrapper-full">
+
+		<!--About Section-->
+		<div class="section about">
+
+			<div class="container">
+				<div class="row">
+					<div class="d-col-4">
+						<h2>About</h2>
+					</div>
+					<div class="d-col-8">
+						<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis voluptates quis quas impedit deserunt ducimus, earum aperiam minima vitae error non eaque repellat rerum, blanditiis et dolores autem hic! Quae.</p>
+						<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis voluptates quis quas impedit deserunt ducimus, earum aperiam minima vitae error non eaque repellat rerum, blanditiis et dolores autem hic! Quae.</p>
+						<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis voluptates quis quas impedit deserunt ducimus, earum aperiam minima vitae error non eaque repellat rerum, blanditiis et dolores autem hic! Quae.</p>	
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		
 
 
-	<div class="rotationlocker">
-		<img src="/assets/images/logo.png" alt="Logo">
-		<p>For best user experince, please rotate your device!</p>
+
+
+
+
+
+
+
+
 	</div>
-
-
-
 
 <!---------------------------------------------Scripting Side--------------------------------------------->
 
@@ -216,6 +243,12 @@
 			document.getElementById("menu_overlay").style.opacity = "0";
 		}
 	</script>
+
+	<script  type="text/javascript">
+
+	
+	</script>
+
 
 	</body>
 </html>

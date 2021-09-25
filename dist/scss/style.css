@@ -371,11 +371,42 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /********** Variables Start **********/
+:root {
+  --dark_bg: #121212;
+  --light_bg: #FFFFFF;
+  --black: #000000;
+  --white: #FFFFFF;
+}
+
+.light-theme {
+  --mainBg: var(--light_bg);
+  --fontColor: var(--black);
+  --lineColor: var(--black);
+  --logoColor: var(--light_bg);
+  --samBG: var(--light_bg);
+}
+
+.dark-theme {
+  --mainBg: var(--dark_bg);
+  --fontColor: var(--white);
+  --lineColor: var(--white);
+  --logoColor: var(--light_bg);
+  --samBG: var(--dark_bg);
+}
+
+/********** Variables End **********/
+/********** Components Start **********/
+.rotationlocker {
+  display: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
   .rotationlocker {
-    z-index: 9999999;
+    z-index: 99999;
     position: fixed;
     background-color: #FF0043;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
     display: block;
     width: 100vw;
     height: 100vh;
@@ -397,47 +428,18 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-:root {
-  --dark_bg: #121212;
-  --light_bg: #FFFFFF;
-  --black: #000000;
-  --white: #FFFFFF;
-}
-
-.light-theme {
-  --mainBg: var(--light_bg);
-  --fontColor: var(--black);
-  --lineColor: var(--black);
-  --switcherBg: #f1f1f1;
-  --switcherColor: #212121;
-  --overlayBg: var(--dark_bg);
-  --ovarlayOpac: 0.3;
-}
-
-.dark-theme {
-  --mainBg: var(--dark_bg);
-  --fontColor: var(--white);
-  --lineColor: var(--white);
-  --switcherBg: #FFEB3B;
-  --switcherColor: #000000;
-  --overlayBg: var(--dark_bg);
-  --ovarlayOpac: 0.8;
-}
-
-/********** Variables End **********/
-/********** Components Start **********/
 .hidden, .none {
   display: none;
 }
 
 .cursor {
-  mix-blend-mode: difference;
-  z-index: 999;
+  z-index: 999999;
   pointer-events: none;
   position: absolute;
   --size: 0.5em;
   height: var(--size);
   width: var(--size);
+  mix-blend-mode: difference;
   background-color: #FFFFFF;
   border-radius: 50px;
   -webkit-transform: translate(-50%, -50%);
@@ -488,6 +490,12 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
+@media (min-width: 1200px) {
+  .cursor {
+    visibility: visible;
+  }
+}
+
 .logo {
   z-index: 9999;
   position: fixed;
@@ -499,10 +507,9 @@ input[type="checkbox"], input[type="radio"] {
 
 @media (max-width: 599px) {
   .logo {
-    position: absolute;
     left: 4vh;
     top: 5vh;
-    color: #fff;
+    color: var(--logoColor);
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -519,10 +526,9 @@ input[type="checkbox"], input[type="radio"] {
 
 @media (min-width: 600px) {
   .logo {
-    position: absolute;
     left: 5vh;
     top: 5vh;
-    color: #fff;
+    color: var(--logoColor);
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -539,10 +545,9 @@ input[type="checkbox"], input[type="radio"] {
 
 @media (min-width: 1200px) {
   .logo {
-    position: absolute;
     left: 7vh;
     top: 7vh;
-    color: #fff;
+    color: var(--logoColor);
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
@@ -564,9 +569,9 @@ input[type="checkbox"], input[type="radio"] {
   mix-blend-mode: exclusion;
   -webkit-filter: invert(-1);
           filter: invert(-1);
-  left: 3vw;
+  left: 4vw;
   bottom: 6vh;
-  font-size: 11px;
+  font-size: 12px;
   color: #FFFFFF;
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
@@ -602,25 +607,12 @@ input[type="checkbox"], input[type="radio"] {
 
 .switch {
   z-index: 2;
+  display: block;
   position: fixed;
-  display: block;
   cursor: pointer;
-  width: 60px;
-  top: 4.8em;
-  right: 9em;
-}
-
-.switch div {
-  background-color: var(--switcherBg);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  display: block;
-  width: 35px;
-  border-radius: 50px;
-  padding: 0 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  cursor: pointer;
+  margin: auto;
+  top: 6.8vh;
+  right: 12vw;
 }
 
 .switch input {
@@ -628,19 +620,16 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .switch .slider {
-  background-color: var(--switcherColor);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  border-radius: 34px;
-  height: 12px;
-  width: 12px;
   display: inline-block;
   position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-size: 1.5em;
 }
 
 .switch input:checked + .slider {
-  -webkit-transform: translateX(13px);
-          transform: translateX(13px);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
 }
 
 .btn {
@@ -919,14 +908,15 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .hero {
-  position: fixed;
+  z-index: -5;
+  position: relative;
   display: block;
   height: 100vh;
   width: 100vw;
 }
 
 .hero .hero-video {
-  z-index: -2;
+  z-index: -4;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100vw;
@@ -937,19 +927,19 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .hero .rounder {
-  display: inline-block;
-  position: fixed;
-  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: 0;
   padding: 0;
+  display: inline-block;
+  position: fixed;
+  z-index: -3;
   margin: auto;
   border-radius: 100%;
-  -webkit-box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 599px) {
@@ -977,6 +967,7 @@ input[type="checkbox"], input[type="radio"] {
   .hero .rounder {
     width: 400px;
     height: 400px;
+    z-index: 999999;
   }
 }
 
@@ -988,12 +979,12 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .hero .rounder .content {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1051,12 +1042,9 @@ input[type="checkbox"], input[type="radio"] {
 
 .hero .rounder .content .context .logo-round {
   position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  mix-blend-mode: exclusion;
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  width: 80%;
+  left: 10%;
+  top: 10%;
   -webkit-animation: spin 15s linear infinite;
   animation: spin 15s linear infinite;
 }
@@ -1065,8 +1053,72 @@ input[type="checkbox"], input[type="radio"] {
   .hero .rounder .context {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background-color: rgba(80, 80, 80, 0.1);
   }
+}
+
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+  width: 90%;
+  max-width: 100%;
+}
+
+.wrapper-full {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 75%;
+  max-width: 75%;
+}
+
+.section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: var(--mainBg);
+}
+
+.about {
+  padding: 5em 0;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  color: var(--lineColor);
+}
+
+.about h2 {
+  font-size: 1.4em;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 200;
+}
+
+.about h2::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  height: 2px;
+  width: 10%;
+  margin-top: 14px;
+  margin-left: 12px;
+  background-color: var(--lineColor);
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.about p {
+  font-size: 1.3em;
+  line-height: 2em;
+  text-align: left;
 }
 
 /********** Components End **********/
