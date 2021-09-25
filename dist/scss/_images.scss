@@ -12,6 +12,8 @@ $preloader-bg: url("/assets/images/preloader.gif");
 //Hero Image
 $hero-image: url("/assets/images/hero.jpg");
 
+$hero-video: url("/assets/videos/video-2-desktop.mp4");
+
 
 //Logo
 @mixin logo {
@@ -30,6 +32,12 @@ $hero-image: url("/assets/images/hero.jpg");
 
 @mixin hero-image {
     background-image: $hero-image;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin hero-video {
+    background-image: $hero-video;
 	background-repeat: no-repeat;
     background-size: contain;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en-US">
 <head>
-
+	<meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta charset="utf-8">
@@ -70,27 +70,17 @@
 </head>
 <body class="light-theme">
 
-    <!--Preloading-->
-	<div class="loading-container">
-		<span class="loader">
-			<span class="loader-inner"></span>
-		</span>
-	</div>
-
 	<!--Cursor-->
 	<div class="cursor"></div>
 
 	<!--Logo-->
-	<div class="logo">
-		<div class="img"></div>
-		<div class="only-mobile"></div>
-	</div>
+	<div class="logo"></div>
 
 	<!--Copyright-->
 	 <div class="copyright">
 		&copy; NiteFox Enterprises 2018 - 2021
 	</div>
-	
+
 	<!--
 	<label class="switch">
 		<div>
@@ -125,42 +115,45 @@
 						<a href="#">Prints</a>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
 
-
-
-
-
 	<!--Hero Section-->
-	<div id="hero">
+	<div class="hero">
 		<div class="container">
 			<div class="row">
 				<div class="d-col-12 t-col-12 m-col-12">
-					<!--Video-->
-					<div class="video-overlay"></div> <!--Video Overlay-->
-					<div class="video-container">
-						<video preload="auto"autoplay loop muted>
-						  	<source src="assets/videos/video-4.mp4" type="video/mp4">
-						</video>
+					<!--Hero Video-->
+					<video playsinline autoplay muted loop class="hero-video">
+						<source src="https://monopo.co.jp/wp-content/themes/monopo/video/bg.mp4" type="video/mp4">
+					</video>
+					<!--Rounder-->
+					<div class="rounder">
+						<div class="content">
+							<div class="context">
+								<img class="main-logo" src="/assets/images/logo.png" alt="Main Logo">
+								<img class="logo-round" src="/assets/images/round-logo-strip.png" alt="Circle around Logo">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+
+
+	<div class="rotationlocker">
+		<img src="/assets/images/logo.png" alt="Logo">
+		<p>For best user experince, please rotate your device!</p>
+	</div>
+
+
 
 
 <!---------------------------------------------Scripting Side--------------------------------------------->
-
-	<!--Preloading-->
-	<script type="text/javascript">
-		$(window).on("load",function(){
-			$(".loading-container").fadeOut("slow");
-		});
-	</script>
 
 	<!--Cursor-->
 	<script type="text/javascript">
@@ -184,7 +177,6 @@
 				cursor.classList.remove("active");
 			});
 		});
-
 		// Facebook
 		$(window).mousemove(function(e) {
     		$(".c-fb")
@@ -198,9 +190,6 @@
       			$('.cursor').removeClass("facebook")
     		})
   		});
-
-
-
 	</script>
 
 	<!--Theme Switcher-->
@@ -226,38 +215,6 @@
 			document.getElementById("menu").style.width = "0%";
 			document.getElementById("menu_overlay").style.opacity = "0";
 		}
-	</script>
-
-	<!--Parallax Thumbnail-->
-	<script type="text/javascript">
-		(function($) {
-        	$.fn.tilt = function() {
-				var perspective = '1000px',
-					delta = 80,
-					width = this.width(),
-					height = this.height(),
-					midWidth = width / 2,
-					midHeight = height / 2;
-				this.on({
-					mousemove: function(e) {
-						var pos = $(this).offset(),
-							cursPosX = e.pageX - pos.left,
-							cursPosY = e.pageY - pos.top,
-							cursCenterX = midWidth - cursPosX,
-							cursCenterY = midHeight - cursPosY;
-						$(this).css('transform', 'perspective(' + perspective + ') rotateX(' + (cursCenterY / delta) + 'deg) rotateY(' + -(cursCenterX / delta) + 'deg)');
-						$(this).removeClass('is-out');
-					},
-					mouseleave: function() {
-						$(this).addClass('is-out');
-					}
-				});
-				//Return
-				return this;
-			};
-		}(jQuery));
-		//Set plugin on cards
-		$('.card').tilt();
 	</script>
 
 	</body>

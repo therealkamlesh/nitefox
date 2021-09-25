@@ -7,6 +7,33 @@
 
 /********** Variables Start **********/
 
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+	.rotationlocker{
+		z-index: 9999999;
+		position: fixed;
+		background-color: #FF0043;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		font-family: $font-primary;
+		color: white;	
+		text-align: center;
+		img{
+			position: fixed;
+			top: 30%;
+			left: 45%;
+			width: 12vw;
+		}		
+		p{
+			position: relative;
+			top: 65%;
+			font-size: 1.1em;
+			font-weight: 500;
+		}
+	}	
+}
+
 // Zeros Mixin
 @mixin zero {
     top: 0;
@@ -77,33 +104,6 @@ $transition: all 1s ease-in-out;
 	display: none;
 }
 
-// Preloading
-.loading-container {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #242f3f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    & .loader {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        border: 4px solid $color-font-base;
-        animation: loader 3s infinite ease;
-    }
-    & .loader-inner {
-        vertical-align: top;
-        display: inline-block;
-        width: 100%;
-        background-color:  $color-bg-base;
-        animation: loader-inner 3s infinite ease-in;
-    }
-}
 
 $cursor-size: 0.4em;
 // Cursor
@@ -145,62 +145,43 @@ $cursor-size: 0.4em;
 // Logo
 .logo{
 	@include fixstyling();
-	
-	// Logo Image	
-	/*
-	& .img{
-		@include logo;
-		width: 2.5vw;
-		height: 8vh;
-		// Small Screen
-		@include for-size(phone-only) {
-			visibility: hidden;
-		}
-		// Small Screen
-		@include for-size(tablet-portrait-up) {
-			visibility: hidden;
-		}
-	}*/
-
 	// Mixin Only Mobile
-	@mixin onlymobilelogo($left, $top, $fontsize) {
-		.only-mobile{
-			position: absolute;
-			left: $left;
-			top: $top;
-			color: #fff;
-			font-family: $font-logo;
-			font-size: $fontsize;
-			&:before{
-				content: "NiteFox";
-			}
-			&:after{
-				content: ".";
-				margin-left: 3px;
-				margin-top: 1px;
-				font-weight: 900;
-			}
-		}		
+	@mixin onlylogo($left, $top, $fontsize) {	
+		position: absolute;
+		left: $left;
+		top: $top;
+		color: #fff;
+		font-family: $font-logo;
+		font-size: $fontsize;
+		&:before{
+			content: "NiteFox";
+		}
+		&:after{
+			content: ".";
+			margin-left: 3px;
+			margin-top: 1px;
+			font-weight: 900;
+		}	
 	}
 	// Small Screen (Only Mobile)
 	@include for-size(phone-only) {
-		@include onlymobilelogo(4vh, 5vh, 1.7em);
+		@include onlylogo(4vh, 5vh, 1.7em);
 	}
 	// Medium Screen (Only Mobile)
 	@include for-size(tablet-portrait-up) {
-		@include onlymobilelogo(5vh,5vh, 1.7em);
+		@include onlylogo(5vh,5vh, 1.7em);
 	}
 	// Large Screen (Only Mobile)
 	@include for-size(desktop-up) {
-		@include onlymobilelogo(7vh,7vh, 1.7em);
+		@include onlylogo(7vh,7vh, 1.7em);
 	}
 }
 
 // Copyright
 .copyright {
 	@include fixstyling();
-	left: 5em;
-	bottom: 4em;
+	left: 3vw;
+	bottom: 6vh;
 	font-size: 11px;
 	color: $color-font-base;
 	writing-mode: vertical-rl;
@@ -286,18 +267,18 @@ $cursor-size: 0.4em;
 			border: none;
 			top: $top;
 			right: $right;
-			font-size: $fontsize;			
+			font-size: $fontsize;
 		}
 		// Small Screen
 		@include for-size(phone-only) {
-			@include btnopen(3.5vh, 7vw, 2em);			
+			@include btnopen(3.5vh, 7vw, 2em);
 			span{
 				visibility: hidden;
 			}
 		}
 		// Medium Screen
 		@include for-size(tablet-portrait-up) {
-			@include btnopen(3.5vh, 5vw, 2em);			
+			@include btnopen(3.5vh, 5vw, 2em);
 			span{
 				font-size: 0.7em;
 				position: absolute;
@@ -307,7 +288,7 @@ $cursor-size: 0.4em;
 		}
 		// Desktop Screen
 		@include for-size(desktop-up) {
-			@include btnopen(6vh, 4vw, 2em);			
+			@include btnopen(6vh, 4vw, 2em);
 			span{
 				font-size: 0.7em;
 				position: absolute;
@@ -315,7 +296,7 @@ $cursor-size: 0.4em;
 				top: 1.3vh;
 			}
 		}
-		
+
 	}
 	// Menu Close
 	&__close{
@@ -325,8 +306,8 @@ $cursor-size: 0.4em;
 			top: $top;
 			right: $right;
 			font-size: $fontsize;
-			-webkit-font-size: 2em;		
-		}		
+			-webkit-font-size: 2em;
+		}
 		// Small Screen
 		@include for-size(phone-only) {
 			@include btnclose(2vh,8vw,3em)
@@ -371,7 +352,7 @@ $cursor-size: 0.4em;
 		// Menu Mixin
 		@mixin smallmenu ($linksize, $headingsize, $linkheight, $left, $right, $top ) {
 			position: absolute;
-			display: block;			
+			display: block;
 			top: $top;
 			left: $left;
 			right: $right;
@@ -425,79 +406,135 @@ $cursor-size: 0.4em;
 	}
 }
 
-
-
-
-
-
-
-
 // Hero Section
-#hero {
+.hero{
+	position: fixed;
+	display: block;
 	height: 100vh;
-	color: $color-font-base;
-	// Video Container
-	.video-container {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
+	width: 100vw;
+	// Hero Videos
+	.hero-video {
+		z-index: -2;
 		object-fit: cover;
-		background-size: cover;
-		// Video
-		& video {
-			position: fixed;
-			z-index: -9999;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
-	}
-	// Video Overlay
-	.video-overlay{
-		z-index: -1;
-		display: block;
-		position:fixed;
-		float:left;
-		top: 0;
 		width: 100vw;
 		height: 100vh;
-		background-color: var(--overlayBg);
-		opacity: var(--ovarlayOpac);
-		transition: $transition;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	// Rounder
+	.rounder{
+
+		@include for-size(phone-only) {
+			width: 250px;
+			height: 250px;	
+		}
+
+		@include for-size(tablet-portrait-up) {
+			width: 300px;
+			height: 300px;	
+		}
+
+		@include for-size(tablet-portrait-up) {
+			width: 350px;
+			height: 350px;	
+		}
+
+		@include for-size(desktop-up) {
+			width: 400px;
+			height: 400px;	
+		}
+
+		@include for-size(big-desktop-up) {
+			width: 500px;
+			height: 500px;	
+		}
+
+
+
+		display: inline-block;
+		position: fixed;
+		z-index: -1;
+		@include zero();
+		margin: auto;
+		border-radius: 100%;
+		box-shadow: 0 0 2rem 0 rgba(0, 0, 0, .4);
+		.content {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			height: 100%;
+			width: 100%;
+			.context {
+				border-radius: 100%;
+			
+				@include for-size(phone-only) {
+					width: 250px;
+					height: 250px;	
+				}
+		
+				@include for-size(tablet-portrait-up) {
+					width: 300px;
+					height: 300px;	
+				}
+		
+				@include for-size(tablet-portrait-up) {
+					width: 350px;
+					height: 350px;	
+				}		
+		
+				@include for-size(desktop-up) {
+					width: 400px;
+					height: 400px;	
+				}
+		
+				@include for-size(big-desktop-up) {
+					width: 500px;
+					height: 500px;	
+				}
+		
+
+				// Center Logo
+				.main-logo{
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: 32%;
+				}
+				// Rounder around logo
+				.logo-round{
+					position: absolute;
+					width: 100%;
+					left: 0;
+					top: 0;
+					mix-blend-mode: exclusion;
+					filter: invert(1);
+					-webkit-animation:spin 15s linear infinite;
+					-moz-animation:spin 15s linear infinite;
+					animation:spin 15s linear infinite;
+				}
+			}
+		}
+		@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+			.context {
+				-webkit-backdrop-filter: blur(5px);
+				backdrop-filter: blur(5px);
+				background-color: rgba(80, 80, 80, 0.1);
+			}
+		}
 	}
 }
-
-
-
-
-
-
 
 
 /********** Components End **********/
 
 /********** Animation Start **********/
 
-// Preloading Animation
-@keyframes loader {
-    0% { transform: rotate(0deg);}
-    25% { transform: rotate(180deg);}
-    50% { transform: rotate(180deg);}
-    75% { transform: rotate(360deg);}
-    100% { transform: rotate(360deg);}
-}
-@keyframes loader-inner {
-    0% { height: 0%;}
-    25% { height: 0%;}
-    50% { height: 100%;}
-    75% { height: 100%;}
-    100% { height: 0%;}
-}
-
+// Logo Rotation
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
 

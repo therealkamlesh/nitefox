@@ -371,6 +371,32 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /********** Variables Start **********/
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .rotationlocker {
+    z-index: 9999999;
+    position: fixed;
+    background-color: #FF0043;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-align: center;
+  }
+  .rotationlocker img {
+    position: fixed;
+    top: 30%;
+    left: 45%;
+    width: 12vw;
+  }
+  .rotationlocker p {
+    position: relative;
+    top: 65%;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+}
+
 :root {
   --dark_bg: #121212;
   --light_bg: #FFFFFF;
@@ -402,43 +428,6 @@ input[type="checkbox"], input[type="radio"] {
 /********** Components Start **********/
 .hidden, .none {
   display: none;
-}
-
-.loading-container {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #242f3f;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.loading-container .loader {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  border: 4px solid #FFFFFF;
-  -webkit-animation: loader 3s infinite ease;
-          animation: loader 3s infinite ease;
-}
-
-.loading-container .loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #F5F5F5;
-  -webkit-animation: loader-inner 3s infinite ease-in;
-          animation: loader-inner 3s infinite ease-in;
 }
 
 .cursor {
@@ -506,24 +495,10 @@ input[type="checkbox"], input[type="radio"] {
   mix-blend-mode: exclusion;
   -webkit-filter: invert(-1);
           filter: invert(-1);
-  /*
-	& .img{
-		@include logo;
-		width: 2.5vw;
-		height: 8vh;
-		// Small Screen
-		@include for-size(phone-only) {
-			visibility: hidden;
-		}
-		// Small Screen
-		@include for-size(tablet-portrait-up) {
-			visibility: hidden;
-		}
-	}*/
 }
 
 @media (max-width: 599px) {
-  .logo .only-mobile {
+  .logo {
     position: absolute;
     left: 4vh;
     top: 5vh;
@@ -531,10 +506,10 @@ input[type="checkbox"], input[type="radio"] {
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
-  .logo .only-mobile:before {
+  .logo:before {
     content: "NiteFox";
   }
-  .logo .only-mobile:after {
+  .logo:after {
     content: ".";
     margin-left: 3px;
     margin-top: 1px;
@@ -543,7 +518,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 @media (min-width: 600px) {
-  .logo .only-mobile {
+  .logo {
     position: absolute;
     left: 5vh;
     top: 5vh;
@@ -551,10 +526,10 @@ input[type="checkbox"], input[type="radio"] {
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
-  .logo .only-mobile:before {
+  .logo:before {
     content: "NiteFox";
   }
-  .logo .only-mobile:after {
+  .logo:after {
     content: ".";
     margin-left: 3px;
     margin-top: 1px;
@@ -563,7 +538,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 @media (min-width: 1200px) {
-  .logo .only-mobile {
+  .logo {
     position: absolute;
     left: 7vh;
     top: 7vh;
@@ -571,10 +546,10 @@ input[type="checkbox"], input[type="radio"] {
     font-family: "Righteous", cursive;
     font-size: 1.7em;
   }
-  .logo .only-mobile:before {
+  .logo:before {
     content: "NiteFox";
   }
-  .logo .only-mobile:after {
+  .logo:after {
     content: ".";
     margin-left: 3px;
     margin-top: 1px;
@@ -589,8 +564,8 @@ input[type="checkbox"], input[type="radio"] {
   mix-blend-mode: exclusion;
   -webkit-filter: invert(-1);
           filter: invert(-1);
-  left: 5em;
-  bottom: 4em;
+  left: 3vw;
+  bottom: 6vh;
   font-size: 11px;
   color: #FFFFFF;
   -webkit-writing-mode: vertical-rl;
@@ -943,128 +918,170 @@ input[type="checkbox"], input[type="radio"] {
   }
 }
 
-#hero {
-  height: 100vh;
-  color: #FFFFFF;
-}
-
-#hero .video-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  -o-object-fit: cover;
-     object-fit: cover;
-  background-size: cover;
-}
-
-#hero .video-container video {
+.hero {
   position: fixed;
-  z-index: -9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-
-#hero .video-overlay {
-  z-index: -1;
   display: block;
-  position: fixed;
-  float: left;
-  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.hero .hero-video {
+  z-index: -2;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100vw;
   height: 100vh;
-  background-color: var(--overlayBg);
-  opacity: var(--ovarlayOpac);
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.hero .rounder {
+  display: inline-block;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  border-radius: 100%;
+  -webkit-box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 599px) {
+  .hero .rounder {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero .rounder {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero .rounder {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero .rounder {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero .rounder {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+.hero .rounder .content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.hero .rounder .content .context {
+  border-radius: 100%;
+}
+
+@media (max-width: 599px) {
+  .hero .rounder .content .context {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero .rounder .content .context {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero .rounder .content .context {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero .rounder .content .context {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero .rounder .content .context {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+.hero .rounder .content .context .main-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 32%;
+}
+
+.hero .rounder .content .context .logo-round {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  mix-blend-mode: exclusion;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  -webkit-animation: spin 15s linear infinite;
+  animation: spin 15s linear infinite;
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .hero .rounder .context {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(80, 80, 80, 0.1);
+  }
 }
 
 /********** Components End **********/
 /********** Animation Start **********/
-@-webkit-keyframes loader {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  25% {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  75% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+
+@-webkit-keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes loader {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  25% {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  75% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
   }
 }
 
-@-webkit-keyframes loader-inner {
-  0% {
-    height: 0%;
-  }
-  25% {
-    height: 0%;
-  }
-  50% {
-    height: 100%;
-  }
-  75% {
-    height: 100%;
-  }
+@keyframes spin {
   100% {
-    height: 0%;
-  }
-}
-
-@keyframes loader-inner {
-  0% {
-    height: 0%;
-  }
-  25% {
-    height: 0%;
-  }
-  50% {
-    height: 100%;
-  }
-  75% {
-    height: 100%;
-  }
-  100% {
-    height: 0%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
